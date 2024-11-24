@@ -16,13 +16,13 @@ const Job = ({ job }) => {
   } = job;
 
   return (
-    <div className="mt-4 flex">
-      <div></div>
+    <div className="mt-4 mx-auto flex">
+     
 
       <div>
         <div className="card card-compact bg-base-100 w-96 shadow-xl">
           <p className=" ml-4 flex justify-start">
-            <figure>
+            <figure className="pt-2">
               <img src={logo} alt="not found" />
             </figure>
           </p>

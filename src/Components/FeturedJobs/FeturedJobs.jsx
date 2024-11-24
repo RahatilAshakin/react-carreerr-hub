@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Job from "../Job/Job";
+import Jobs from "../Jobs/Jobs";
 
 const FeturedJobs = () => {
   const [jobs, setjobs] = useState([]);
@@ -12,7 +13,7 @@ const FeturedJobs = () => {
   }, []);
 
   return (
-    <div className="bg-green-200 mt-10 mb-10">
+    <div className=" mt-10 mb-10 ">
       <div>
         <h2 className="text-6xl text-red-700 mt-5 mb-5 text-center">
           Featured jobs {jobs.length}
@@ -23,16 +24,24 @@ const FeturedJobs = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2  gap-6">
+      <div className="sm:grid grid-cols-2 gap-6 ">
+        {/* Render Job and Jobs components independently */}
         {jobs.slice(0, dataLength).map((job) => (
-          <Job key={job.id} job={job}></Job>
+          <>
+            <Job key={job.id} job={job} />
+            
+          </>
         ))}
       </div>
-      <div className={dataLength===jobs.length && "hidden"}>
+
+      <div className={dataLength === jobs.length ? "hidden" : ""}>
         <h2 className="text-center mt-6">
           <button
-           onClick={()=>setDataLength(jobs.length)}
-           className="btn btn-primary">ShowAll Jobs</button>
+            onClick={() => setDataLength(jobs.length)}
+            className="btn btn-primary"
+          >
+            Show All Jobs
+          </button>
         </h2>
       </div>
     </div>

@@ -6,7 +6,7 @@ import FeturedJobs from '../FeturedJobs/FeturedJobs';
 const Home = () => {
     return (
         <div>
-             <h1 className="text-center font-bold text-3xl capitalize text-green-800">This is Home</h1>
+             
 
             <Banner></Banner>
            
