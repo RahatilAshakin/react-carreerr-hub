@@ -2,58 +2,57 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import './index.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
-import AvailableJobs from './Components/AvailableJobs/AvailableJobs'; 
+import AvailableJobs from './Components/AvailableJobs/AvailableJobs';
 import AppliedJobs from './Components/AppliedJobs/AppliedJobs';
 import Statictis from './Components/Statictis/Statictis';
 import Blogs from './Components/Blogs/Blogs';
 import ErrorPage from './Components/ErrorPage/ErrorPage';
 import JobDetails from './Components/JobDetails/JobDetails';
 
+// Create your router
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
       },
       {
         path: "/Jobs",
-        element: <AvailableJobs></AvailableJobs>, 
-        loader: () => fetch(`/public/jobs.json`),
+        element: <AvailableJobs />,
+        loader: () => fetch('/jobs.json').then(res => res.json()),  // Fetch and return JSON data
       },
       {
         path: "/Applied",
-        element: <AppliedJobs></AppliedJobs>,
-        loader: () => fetch(`/public/jobs.json`),
+        element: <AppliedJobs />,
+        loader: () => fetch('/jobs.json').then(res => res.json()),  // Same as above
       },
       {
         path: "/Statictis",
-        element: <Statictis></Statictis>,
+        element: <Statictis />,
       },
       {
         path: "/Blogs",
-        element: <Blogs></Blogs>,
+        element: <Blogs />,
       },
       {
         path: "/Job/:id",
-        element: <JobDetails></JobDetails>,
-        loader: () => fetch(`/public/jobs.json`),
+        element: <JobDetails />,
+        loader: () => fetch('/jobs.json').then(res => res.json()), // Fetch job data for JobDetails
       },
     ],
   },
 ]);
 
+// Render the app
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </StrictMode>
 );
