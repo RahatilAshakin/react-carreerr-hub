@@ -1,14 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-import './index.css'
+import './index.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import Root from './Components/Root/Root';
 import Home from './Components/Home/Home';
-import Jobs from './Components/Jobs/Jobs';
+import AvailableJobs from './Components/AvailableJobs/AvailableJobs'; 
 import AppliedJobs from './Components/AppliedJobs/AppliedJobs';
 import Statictis from './Components/Statictis/Statictis';
 import Blogs from './Components/Blogs/Blogs';
@@ -19,47 +19,41 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
-{
-  path:"/",
-  element: <Home></Home>
-},
-{
-  path:"/Jobs",
-  element: <Jobs></Jobs>
-},
-{
-  path:"/Applied",
-  element: <AppliedJobs></AppliedJobs>,
-  loader: ()=> fetch(`/public/jobs.json`)
-},
-{
-  path:"/Statictis",
-  element: <Statictis></Statictis>
-},
-{
-  path:"/Blogs",
-  element: <Blogs></Blogs>
-},
-{
-
-  path:'/Job/:id',
-  element:<JobDetails></JobDetails>,
-  loader: ()=> fetch(`/public/jobs.json`)
-
-}
-
-
-
-    ]
-
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/Jobs",
+        element: <AvailableJobs></AvailableJobs>, 
+        loader: () => fetch(`/public/jobs.json`),
+      },
+      {
+        path: "/Applied",
+        element: <AppliedJobs></AppliedJobs>,
+        loader: () => fetch(`/public/jobs.json`),
+      },
+      {
+        path: "/Statictis",
+        element: <Statictis></Statictis>,
+      },
+      {
+        path: "/Blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/Job/:id",
+        element: <JobDetails></JobDetails>,
+        loader: () => fetch(`/public/jobs.json`),
+      },
+    ],
   },
 ]);
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>,
-)
+);

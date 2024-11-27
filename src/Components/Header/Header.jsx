@@ -26,8 +26,8 @@ const Header = () => {
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/Jobs">Jobs</NavLink></li>
             <li><NavLink to="/Applied">Applied</NavLink></li>
-            <li><NavLink to="/Statictis">Statictis</NavLink></li>
-            <li><NavLink to="/Blogs">Blogs</NavLink></li>
+            {/* <li><NavLink to="/Statictis">Statictis</NavLink></li> */}
+            {/* <li><NavLink to="/Blogs">Blogs</NavLink></li> */}
         </>
     );
 
@@ -69,7 +69,8 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn btn-primary">Start Applying</a>
+                    
+                    <Link to={'/Jobs'}><a className="btn btn-primary">Start Applying</a></Link>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Job from "../Job/Job";
-import Jobs from "../Jobs/Jobs";
+
 
 const FeturedJobs = () => {
   const [jobs, setjobs] = useState([]);
@@ -15,16 +15,16 @@ const FeturedJobs = () => {
   return (
     <div className=" mt-10 mb-10 ">
       <div>
-        <h2 className="text-6xl text-red-700 mt-5 mb-5 text-center">
+        <h2 className="text-6xl font-bold mt-5 mb-5 text-center">
           Featured jobs {jobs.length}
         </h2>
-        <p className="text-red-700 ml-48 mr-48 bg-black text-center">
+        <p className=" ml-48 mr-48 text-center">
           Discover top featured jobs, handpicked to match your skills and
           accelerate your career growth today.
         </p>
       </div>
 
-      <div className="sm:grid grid-cols-2 gap-6 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  mt-10 w-3/4 m-auto ">
         {/* Render Job and Jobs components independently */}
         {jobs.slice(0, dataLength).map((job) => (
           <>
